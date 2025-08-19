@@ -23,7 +23,7 @@
 
 \item{lambdas}{hyperparameter(s) for penalization}
 
-\item{nonzeros}{maximum number of non-zero coefficients}
+\item{nonzeros}{maximum number of non-zero coefficients; early stop}
 
 \item{label}{column labels of the X}
 

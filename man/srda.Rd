@@ -19,27 +19,27 @@ srda(
 )
 }
 \arguments{
-\item{explanatory}{A explanatory matrix or data frame}
+\item{explanatory}{explanatory matrix or data frame, n x p}
 
-\item{response}{A response matrix or data frame}
+\item{response}{response matrix or data frame, n x q}
 
 \item{penalization}{The penalization method: "enet", "ust", "none"}
 
 \item{lambdas}{The ridge penalty parameter of the explanatory latent variable (Xi) used for enet}
 
-\item{nonzeros}{The number of non-zero alpha weights of the explanatory latent variable (Xi) used for enet or ust}
+\item{nonzeros}{The number of non-zero weights of the explanatory latent variable (Xi) used for enet or ust}
 
-\item{n_lvs}{x}
+\item{n_lvs}{Number of latent variables}
 
 \item{max_iteration}{Maximum number of iterations}
 
 \item{tolerance}{Convergence criteria}
 
-\item{parallel}{Run the cross-validation in parallel (logical; TRUE or FALSE)}
+\item{parallel}{logical; run cross-validation in parallel or not}
 
 \item{cv_n_folds}{x}
 
-\item{seed}{x}
+\item{seed}{seed number, default is 1234}
 }
 \value{
 A sRDA object

@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_multiple_lvs.R
 \name{.run_multiple_lvs}
 \alias{.run_multiple_lvs}
-\title{Title}
+\title{Run sRDA with n > 1 multiple latnet variables}
 \usage{
 .run_multiple_lvs(
   X,
@@ -19,11 +19,11 @@
 )
 }
 \arguments{
-\item{X}{x}
+\item{X}{explanatory matrix or data frame, n x p}
 
-\item{Y}{x}
+\item{Y}{Response matrix, n x q}
 
-\item{penalization}{x}
+\item{penalization}{penalization methods}
 
 \item{lambdas}{x}
 
@@ -45,7 +45,7 @@
 x
 }
 \description{
-Title
+This is an internal function.
 }
 \examples{
 x

@@ -2,24 +2,18 @@
 % Please edit documentation in R/run_permutation_test.R
 \name{run_permutation_test}
 \alias{run_permutation_test}
-\title{Permutation test for the significance of features in sRDA}
+\title{Permutation test for accessing the significance of latent variables in sRDA}
 \usage{
-run_permutation_test(rda, n_permutation, plot = FALSE)
+run_permutation_test(rda, n_permutation = 1000)
 }
 \arguments{
-\item{rda}{x}
+\item{rda}{a sRDA class object}
 
-\item{n_permutation}{x}
-
-\item{plot}{x}
+\item{n_permutation}{number of permutations; default is 1,000 times}
 }
 \value{
 a result data frame
 }
 \description{
-Permutation test for the significance of features in sRDA
-}
-\examples{
-x
-
+Permutation test for accessing the significance of latent variables in sRDA
 }
