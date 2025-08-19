@@ -9,8 +9,6 @@ summary.sRDA <- function(x, ...) {
     if (length(x) > 1) {
         for (ith in 1:length(x)) {
 
-            rh_test <- cor.test(x[[ith]]$XI, x[[ith]]$ETA)
-
             cat(rep("-", 20), sep="")
             cat(paste0("\nComponent ", x[[ith]]$component))
             cat(paste0("\n1. Latent association : ", round(rh_test$estimate, 3)))

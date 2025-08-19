@@ -6,7 +6,7 @@
 #' @param X explanatory matrix (n x p)
 #' @param Y response matrix (n x q)
 #' @param lambdas hyperparameter(s) for penalization
-#' @param nonzeros maximum number of non-zero coefficients
+#' @param nonzeros maximum number of non-zero coefficients; early stop
 #' @param label column labels of the X
 #' @param cv_n_folds number of folds for cross-validation
 #' @param penalization which penalization method
@@ -31,8 +31,12 @@
     doSNOW::registerDoSNOW(cl)
     foreach::getDoParWorkers()
 
-    # prgo bar
-    pb <- txtProgressBar(min = 0, max = length(lambdas) * length(nonzeros), style = 3)
+    pb <- txtProgressBar(
+        min = 0,
+        max = length(lambdas) * length(nonzeros),
+        width = 70,
+        style = 3
+    )
     progress <- function(n) {
         setTxtProgressBar(pb, n)
     }
@@ -77,13 +81,9 @@
             absolute_rhos = I(list(cv_absolute_rhos)),
             max_iteration = I(list(cv_max_iteration))
         )
-
         return(iter_result)
-
     } # end of lambda for loop
-
     close(pb)
     parallel::stopCluster(cl)
-
     return(result)
 }

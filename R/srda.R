@@ -5,17 +5,17 @@
 #' paper for more details. If you use this package, please consider cite the
 #' original paper of sRDA.
 #'
-#' @param explanatory A explanatory matrix or data frame
-#' @param response A response matrix or data frame
+#' @param explanatory explanatory matrix or data frame, n x p
+#' @param response response matrix or data frame, n x q
 #' @param penalization The penalization method: "enet", "ust", "none"
 #' @param lambdas The ridge penalty parameter of the explanatory latent variable (Xi) used for enet
-#' @param nonzeros The number of non-zero alpha weights of the explanatory latent variable (Xi) used for enet or ust
+#' @param nonzeros The number of non-zero weights of the explanatory latent variable (Xi) used for enet or ust
 #' @param max_iteration Maximum number of iterations
 #' @param tolerance Convergence criteria
 #' @param cv_n_folds x
-#' @param parallel Run the cross-validation in parallel (logical; TRUE or FALSE)
-#' @param n_lvs x
-#' @param seed x
+#' @param parallel logical; run cross-validation in parallel or not
+#' @param n_lvs Number of latent variables
+#' @param seed seed number, default is 1234
 #'
 #' @return A sRDA object
 #'
@@ -65,12 +65,13 @@ srda <- function(
             parallel = parallel,
             seed = seed
         )
+        class(result) <- c("sRDA", "list")
         return(result)
     }
 
     # Cross Validation ---------------------------------------------------------
     cv_results <- NULL
-    cv_results$cv_results <- "Cross validation function is not called."
+    cv_results$cv_results <- "Cross validation is not used."
 
     if (cv) {
         # run cross-validation to search for best lambda and nonzero
@@ -108,6 +109,5 @@ srda <- function(
     result$selected_lambda <- lambda
     result$selected_nonzero <- nonzero
     result$cv_results <- cv_results$cv_results
-
     return(result)
 }

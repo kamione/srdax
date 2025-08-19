@@ -1,8 +1,10 @@
-#' Title
+#' Run sRDA with n > 1 multiple latnet variables
 #'
-#' @param X x
-#' @param Y x
-#' @param penalization x
+#' This is an internal function.
+#'
+#' @param X explanatory matrix or data frame, n x p
+#' @param Y Response matrix, n x q
+#' @param penalization penalization methods
 #' @param lambdas x
 #' @param nonzeros x
 #' @param n_lvs x
@@ -30,7 +32,7 @@
     results <- list()
 
     while (ith_component <= n_lvs && !stop_flag) {
-        cat("Running component", ith_component, "\n")
+        cat("Running Latent Variable", ith_component, "\n")
 
         result <- srda(
             explanatory = Res_X,
@@ -66,9 +68,9 @@
             stop_flag <- TRUE
         }
 
-        cat("Calculation of component", ith_component, "is completed on", Sys.time(), "!\n\n")
+        cat("Latent variable", ith_component, "was successfully calculated at",
+            format(Sys.time(), "%H:%M"), "on", format(Sys.time(), "%d-%b-%Y"), "\n\n")
         ith_component <- ith_component + 1
     }
-
     return(results)
 }
